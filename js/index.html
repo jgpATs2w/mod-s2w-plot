@@ -1,0 +1,28 @@
+
+<script type="text/javascript" src="../../log/js/s2w.log.mod.js"></script>
+<script type="text/javascript" src="../../error/js/s2w.error.mod.js"></script>
+<script type="text/javascript" src="../../matrix/js/s2w.sqlmatrix.mod.js"></script>
+
+<canvas id="s2w_plot_canvas" style="border:1px solid #d3d3d3;">cargando..</canvas>
+<div id="s2w_plot_legend" style="position: absolute; top: 10px; right: 10px; z-index: 10; border:1px solid #d3d3d3; font-size: 12px;">cargando...</div>
+<script src="s2w.plot.mod.js"></script>
+<script>
+
+	json = '[{"id":0,"que":"algo","cuanto":"3000","cuando":"2012-01-01"},'+
+						'{"id":1,"que":"algo","cuanto":"40","cuando":"2012-01-20"},'+
+						'{"id":2,"que":"algo","cuanto":"50","cuando":"2012-04-21"},'+
+						'{"id":3,"que":"algo","cuanto":"35","cuando":"2012-06-30"}]';
+	
+	s2w.Matrix = new s2w.SQLMatrix(json);
+						
+	s2w.Plot = new S2WPlot();
+		//s2w.Plot.setData({"bar":{"2012-01-15":0,"2012-02-15":0,"2012-03-15":0,"2012-04-15":0,"2012-05-15":0,"2012-06-15":0,"2012-07-15":0,"2012-08-15":0,"2012-09-15":0,"2012-10-15":66,"2012-11-15":0,"2012-12-15":0},"prueba":{"2012-01-15":0,"2012-02-15":0,"2012-03-15":0,"2012-04-15":0,"2012-05-15":0,"2012-06-15":0,"2012-07-15":0,"2012-08-15":0,"2012-09-15":0,"2012-10-15":1263,"2012-11-15":0,"2012-12-15":0}});
+		ycols = ["cuanto"];
+		s2w.Plot.setData("cuando",ycols);
+		
+		s2w.Plot.plot();
+
+	window.onresize = function(){
+		s2w.Plot.plot();
+	}
+</script>
